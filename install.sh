@@ -15,6 +15,14 @@ cd Moded-uvcvideo-JetsonTX2
 cp uvcvideo.h /usr/src/kernel/kernel-4.4/drivers/media/usb/uvc/
 cp uvc_driver.c /usr/src/kernel/kernel-4.4/drivers/media/usb/uvc/
 cp videodev2.h /usr/src/kernel/kernel-4.4/include/uapi/linux/ 
+cd /usr/src/kernel/kernel-4.4
+make prepare
+make modules_prepare
+# Make alone will build the dts files too
+# make -j6
+make -j6 Image
+make modules
+make modules_install
 echo all done!
 
 
